@@ -1,0 +1,807 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NVIDIA | عالم المستقبل</title>
+
+<style>
+:root {
+    --green: #76b900;
+    --black: #080b08;
+    --panel: #111711;
+    --white: #f4f7f1;
+    --gray: #a5afa2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Tahoma, Arial, sans-serif;
+    background: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+header {
+    width: 100%;
+    padding: 20px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    background: rgba(5, 8, 5, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #ffffff12;
+}
+
+.logo {
+    color: var(--green);
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+nav {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+}
+
+nav a {
+    color: #d0d8ce;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: var(--green);
+}
+
+.menu-btn {
+    display: none;
+    color: var(--green);
+    background: transparent;
+    border: 1px solid var(--green);
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 140px 9% 80px;
+    position: relative;
+    background:
+      linear-gradient(270deg, #080b08 5%, #080b08ed 38%, #080b0860 100%),
+      url("https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=2000&q=85")
+      center/cover no-repeat;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--green), transparent);
+    box-shadow: 0 0 25px var(--green);
+}
+
+.hero-content {
+    max-width: 700px;
+    position: relative;
+    z-index: 1;
+    animation: appear 1s ease both;
+}
+
+.tag {
+    display: inline-block;
+    color: var(--green);
+    border: 1px solid #76b90070;
+    background: #76b90012;
+    padding: 10px 17px;
+    border-radius: 30px;
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 6vw, 76px);
+    line-height: 1.35;
+    font-weight: 900;
+    margin-bottom: 22px;
+}
+
+.hero h1 span {
+    color: var(--green);
+    text-shadow: 0 0 35px #76b90045;
+}
+
+.hero p {
+    color: #bac3b8;
+    font-size: 17px;
+    line-height: 2;
+    max-width: 570px;
+    margin-bottom: 32px;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 27px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-green {
+    background: var(--green);
+    color: #071000;
+    border: 1px solid var(--green);
+}
+
+.btn-green:hover {
+    box-shadow: 0 0 30px #76b90060;
+    transform: translateY(-3px);
+}
+
+.btn-outline {
+    border: 1px solid #ffffff50;
+    color: white;
+}
+
+.btn-outline:hover {
+    border-color: var(--green);
+    color: var(--green);
+}
+
+section {
+    padding: 95px 8%;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-heading .small {
+    color: var(--green);
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.section-heading h2 {
+    font-size: clamp(27px, 4vw, 43px);
+    margin-bottom: 18px;
+}
+
+.section-heading p {
+    color: var(--gray);
+    line-height: 1.9;
+}
+
+.products {
+    background:
+      radial-gradient(ellipse at 50% 0%, #76b9000d, transparent 60%),
+      #0b0f0b;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.card {
+    background: var(--panel);
+    border: 1px solid #ffffff12;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.35s;
+}
+
+.card:hover {
+    transform: translateY(-9px);
+    border-color: #76b90085;
+    box-shadow: 0 15px 40px #00000055;
+}
+
+.card img {
+    width: 100%;
+    height: 225px;
+    object-fit: cover;
+    display: block;
+    transition: 0.5s;
+}
+
+.card:hover img {
+    transform: scale(1.04);
+}
+
+.card-content {
+    padding: 25px;
+}
+
+.card h3 {
+    font-size: 21px;
+    margin-bottom: 13px;
+}
+
+.card p {
+    color: var(--gray);
+    line-height: 1.9;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.card a {
+    color: var(--green);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.technology {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 55px;
+    background: #090d09;
+}
+
+.tech-image {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid #76b90035;
+    box-shadow: 0 0 50px #76b9000c;
+}
+
+.tech-image img {
+    width: 100%;
+    display: block;
+    min-height: 300px;
+    object-fit: cover;
+}
+
+.tech-text .small {
+    color: var(--green);
+    margin-bottom: 18px;
+    font-size: 13px;
+}
+
+.tech-text h2 {
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.tech-text p {
+    color: var(--gray);
+    line-height: 2;
+    margin-bottom: 28px;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 13px;
+    margin: 25px 0;
+}
+
+.feature {
+    padding: 17px;
+    background: #121812;
+    border: 1px solid #ffffff0d;
+    border-radius: 8px;
+}
+
+.feature strong {
+    color: var(--green);
+    display: block;
+    margin-bottom: 9px;
+}
+
+.feature span {
+    color: var(--gray);
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.banner {
+    margin: 80px 8%;
+    padding: 65px 30px;
+    text-align: center;
+    border: 1px solid #76b90045;
+    border-radius: 16px;
+    background:
+      radial-gradient(ellipse at center, #76b90020, transparent 70%),
+      #101510;
+}
+
+.banner h2 {
+    font-size: clamp(26px, 4vw, 43px);
+    margin-bottom: 18px;
+}
+
+.banner p {
+    color: var(--gray);
+    line-height: 2;
+    margin-bottom: 25px;
+}
+
+footer {
+    padding: 35px 8%;
+    border-top: 1px solid #ffffff12;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    color: var(--gray);
+    font-size: 13px;
+}
+
+footer span {
+    color: var(--green);
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 900px) {
+    header {
+        padding: 18px 5%;
+    }
+
+    nav {
+        gap: 14px;
+    }
+
+    .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .technology {
+        grid-template-columns: 1fr;
+    }
+
+    .tech-image {
+        order: 2;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 15px 0;
+    }
+
+    nav.open {
+        display: flex;
+    }
+
+    nav a {
+        padding: 10px 0;
+    }
+
+    .hero {
+        min-height: 90vh;
+        padding: 150px 6% 70px;
+        background-position: center;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    section {
+        padding: 70px 6%;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .card img {
+        height: 230px;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    .banner {
+        margin: 50px 6%;
+        padding: 45px 20px;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <a class="logo" href="#home">NVIDIA<span>®</span></a>
+
+    <button class="menu-btn" id="menuBtn"
+            aria-label="فتح القائمة" aria-expanded="false">
+        ☰ القائمة
+    </button>
+
+    <nav id="navMenu">
+        <a href="#home">الرئيسية</a>
+        <a href="#products">المنتجات</a>
+        <a href="#technology">التقنيات</a>
+        <a href="#about">حول الموقع</a>
+    </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+    <div class="hero-content">
+        <div class="tag">⚡ مرحباً بك في الجيل الجديد</div>
+
+        <h1>
+            المستقبل يبدأ<br>
+            مع <span>NVIDIA RTX</span>
+        </h1>
+
+        <p>
+            اكتشف قوة الرسوميات المتطورة والذكاء الاصطناعي،
+            وادخل إلى عالم الألعاب بتفاصيل مذهلة وأداء
+            يصنع تجربة مختلفة تماماً.
+        </p>
+
+        <div class="buttons">
+            <a href="#products" class="btn btn-green">
+                اكتشف المنتجات ←
+            </a>
+
+            <a href="#technology" class="btn btn-outline">
+                استكشف التقنيات
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="products" id="products">
+    <div class="section-heading reveal">
+        <div class="small">POWER YOUR DREAMS</div>
+        <h2>اكتشف عالم NVIDIA</h2>
+        <p>
+            تقنيات تجمع بين القوة والإبداع والأداء العالي.
+        </p>
+    </div>
+
+    <div class="cards">
+
+        <article class="card reveal">
+            <img
+              src="https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=900&q=85"
+              alt="مكونات كمبيوتر للألعاب"
+              loading="lazy">
+
+            <div class="card-content">
+                <h3>GeForce RTX</h3>
+                <p>
+                    استمتع برسوميات واقعية وتجارب ألعاب
+                    غامرة باستخدام تقنيات تتبع الأشعة
+                    والذكاء الاصطناعي.
+                </p>
+                <a href="https://www.nvidia.com/en-us/geforce/"
+                   target="_blank" rel="noopener noreferrer">
+                    اكتشف GeForce ↗
+                </a>
+            </div>
+        </article>
+
+        <article class="card reveal">
+            <img
+              src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=900&q=85"
+              alt="حاسوب مكتبي عالي الأداء"
+              loading="lazy">
+
+            <div class="card-content">
+                <h3>Gaming Performance</h3>
+                <p>
+                    ابنِ جهازك المثالي للألعاب وصناعة المحتوى
+                    مع تجربة مصممة لعشاق الأداء العالي.
+                </p>
+                <a href="https://www.nvidia.com/en-us/geforce/"
+                   target="_blank" rel="noopener noreferrer">
+                    اعرف المزيد ↗
+                </a>
+            </div>
+        </article>
+
+        <article class="card reveal">
+            <img
+              src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=900&q=85"
+              alt="الذكاء الاصطناعي والتقنيات المستقبلية"
+              loading="lazy">
+
+            <div class="card-content">
+                <h3>Artificial Intelligence</h3>
+                <p>
+                    اكتشف عالماً جديداً من الابتكار مع
+                    الحوسبة المتسارعة وتطبيقات الذكاء الاصطناعي.
+                </p>
+                <a href="https://www.nvidia.com/en-us/ai/"
+                   target="_blank" rel="noopener noreferrer">
+                    اكتشف الذكاء الاصطناعي ↗
+                </a>
+            </div>
+        </article>
+ 
+    </div>
+</section>
+
+<section class="technology" id="technology">
+    <div class="tech-image reveal">
+        <img
+          src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=85"
+          alt="تقنيات ومكونات إلكترونية"
+          loading="lazy">
+    </div>
+
+    <div class="tech-text reveal">
+        <div class="small">TECHNOLOGY WITHOUT LIMITS</div>
+
+        <h2>
+            تقنية تصنع<br>
+            <span style="color:#76b900">المستقبل</span>
+        </h2>
+
+        <p>
+            من عالم الألعاب إلى الذكاء الاصطناعي،
+            تساعد تقنيات NVIDIA على تقديم تجارب
+            متطورة للمبدعين والمطورين واللاعبين.
+        </p>
+
+        <div class="features">
+            <div class="feature">
+                <strong>RTX</strong>
+                <span>رسوميات متطورة وتتبع الأشعة</span>
+            </div>
+
+            <div class="feature">
+                <strong>DLSS</strong>
+                <span>تقنيات ذكية لتحسين أداء الألعاب</span>
+            </div>
+
+            <div class="feature">
+                <strong>AI</strong>
+                <span>حوسبة وابتكار بالذكاء الاصطناعي</span>
+            </div>
+
+            <div class="feature">
+                <strong>STUDIO</strong>
+                <span>أدوات للمبدعين وصناعة المحتوى</span>
+            </div>
+        </div>
+
+        <a class="btn btn-green"
+           href="https://www.nvidia.com/"
+           target="_blank" rel="noopener noreferrer">
+            الموقع الرسمي ↗
+        </a>
+    </div>
+</section>
+
+<!-- مصطفى عدي يوسف | Programmer Profile -->
+<section class="profile reveal" id="programmer">
+
+    <div class="profile-card">
+
+        <div class="profile-glow"></div>
+
+        <div class="profile-label">
+            <span class="status-dot"></span>
+            DEVELOPER PROFILE
+        </div>
+
+        <div class="profile-icon">
+            &lt;/&gt;
+        </div>
+
+        <p class="profile-subtitle">
+            DESIGNED & DEVELOPED BY
+        </p>
+
+        <h2 class="profile-name">
+            MUSTAFA <span>ADI YOUSIF</span>
+        </h2>
+
+        <div class="profile-line"></div>
+
+        <h3 class="profile-role">
+            <span>Full of Ambition</span> | PROGRAMMER
+        </h3>
+
+        <div class="profile-info">
+
+            <div class="profile-item">
+                <span class="profile-symbol">⌘</span>
+                <div>
+                    <small>UNIVERSITY</small>
+                    <h4>Mustansiriyah University</h4>
+                    <p>الجامعة المستنصرية</p>
+                </div>
+            </div>
+
+            <div class="profile-item">
+                <span class="profile-symbol">&lt;/&gt;</span>
+                <div>
+                    <small>DEPARTMENT</small>
+                    <h4>Computer Science</h4>
+                    <p>قسم علوم الحاسوب</p>
+                </div>
+            </div>
+
+            <div class="profile-item">
+                <span class="profile-symbol">✦</span>
+                <div>
+                    <small>FIELD</small>
+                    <h4>Programming & Technology</h4>
+                    <p>البرمجة والتكنولوجيا</p>
+                </div>
+            </div>
+
+        </div>
+
+        <p class="profile-quote">
+            "Turning Ideas Into Code."
+        </p>
+
+        <a href="#home" class="profile-button">
+            BACK TO TOP ↑
+        </a>
+
+    </div>
+
+</section>
+
+<section class="banner reveal" id="about">
+    <h2>هل أنت مستعد للمستقبل؟</h2>
+    <p>
+        عالم التكنولوجيا يتطور باستمرار.<br>
+        اكتشف المزيد من حلول NVIDIA وتقنياتها.
+    </p>
+
+    <a class="btn btn-green"
+       href="https://www.nvidia.com/"
+       target="_blank" rel="noopener noreferrer">
+        انطلق الآن ↗
+    </a>
+</section>
+</main>
+
+<footer>
+    <a class="logo" href="#home">NVIDIA®</a>
+
+    <p>
+        موقع تجريبي تعليمي بتصميم مستوحى من عالم التقنية.
+    </p>
+
+    <p>
+        © <span id="year"></span>
+        جميع الحقوق محفوظة لأصحاب علاماتهم التجارية.
+    </p>
+</footer>
+
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const navMenu = document.getElementById("navMenu");
+
+menuBtn.addEventListener("click", function () {
+    const opened = navMenu.classList.toggle("open");
+    menuBtn.setAttribute("aria-expanded", String(opened));
+});
+
+document.querySelectorAll("#navMenu a").forEach(function (link) {
+    link.addEventListener("click", function () {
+        navMenu.classList.remove("open");
+        menuBtn.setAttribute("aria-expanded", "false");
+    });
+});
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+            observer.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.12
+});
+
+document.querySelectorAll(".reveal").forEach(function (element) {
+    observer.observe(element);
+});
+</script>
+
+</body>
+</html>
